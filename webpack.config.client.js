@@ -44,6 +44,7 @@ module.exports = {
   },
   plugins: [
     new webpack.DefinePlugin({
+      global: 'window',
       'process.env': {
         NODE_ENV: JSON.stringify(DEV ? 'development' : 'production'),
       },

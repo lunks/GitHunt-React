@@ -3,10 +3,13 @@ import { Route, Switch } from 'react-router';
 import routes from './index';
 import Navbar from '../components/Navbar';
 
-const Panel = require('apollo-client-devtools').Panel;
-console.log(Panel);
-
 const ReactGA = process.browser ? require('react-ga') : {};
+
+const Panel =
+  typeof window !== 'undefined'
+    ? require('apollo-client-devtools').Panel
+    : null;
+console.log('tried loading panel', Panel);
 
 if (process.browser) {
   // Initialize Analytics
@@ -31,6 +34,12 @@ const Layout = () => (
         {routes.map(route => <Route key={`route-${route.name}`} {...route} />)}
       </Switch>
     </div>
+    {!!Panel && (
+      <div>
+        <div id="devtools" />
+        <Panel />
+      </div>
+    )}
   </div>
 );
 

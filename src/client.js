@@ -30,6 +30,8 @@ const client = new ApolloClient({
   cache: new InMemoryCache().restore(window.__APOLLO_STATE__),
 });
 
+console.log('what?');
+
 render(
   <ApolloProvider client={client}>
     <BrowserRouter>

@@ -18,8 +18,17 @@ module.exports = {
         loader: 'style-loader!css-loader',
       },
       {
+        test: /\.less$/,
+        loader: 'style-loader!css-loader!less-loader',
+      },
+      {
         test: /\.js$/,
         loader: 'babel-loader',
+        exclude: /(node_modules)/,
+      },
+      {
+        test: /\.flow$/,
+        loader: 'flow-bin',
         exclude: /(node_modules)/,
       },
       {

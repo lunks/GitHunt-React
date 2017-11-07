@@ -3,6 +3,9 @@ import { Route, Switch } from 'react-router';
 import routes from './index';
 import Navbar from '../components/Navbar';
 
+const Panel = require('apollo-client-devtools').Panel;
+console.log(Panel);
+
 const ReactGA = process.browser ? require('react-ga') : {};
 
 if (process.browser) {

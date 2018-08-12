@@ -1,5 +1,5 @@
 import { ApolloLink } from 'apollo-link';
-import { HttpLink } from 'apollo-link-http';
+import { createUploadLink } from 'apollo-upload-client';
 import { WebSocketLink } from 'apollo-link-ws';
 import { onError } from 'apollo-link-error';
 import { getMainDefinition } from 'apollo-utilities';
@@ -34,7 +34,7 @@ export const subscriptionLink = (config = {}) =>
 export const queryOrMutationLink = (config = {}) =>
   // turn on CDN support via GET
   createPersistedQueryLink({ useGETForHashedQueries: true }).concat(
-    new HttpLink({
+    createUploadLink({
       ...config,
       credentials: 'same-origin',
     })
